@@ -1,32 +1,21 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import {convertCurrency} from '../../constants/Function';
 import Theme from '../../constants/Theme';
 
 const ProductDetailSceen = ({route}) => {
   const {product} = route.params;
   return (
-    <View
-      style={{
-        flex: 1,
-      }}>
-      {/* <Text>{JSON.stringify(route.params)} </Text> */}
+    <View style={{flex: 1}}>
       <Image
         resizeMode="contain"
-        style={{
-          width: Theme.sizes.device_width,
-          height: Theme.sizes.device_width / 2,
-          backgroundColor: 'white',
+        style={styles.styleImage}
+        source={{
+          uri: 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
         }}
-        source={{uri: product.url}}
       />
       <View style={{margin: 15, flex: 1}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+        <View style={styles.textTitle}>
           <Text
             style={{fontSize: 16, fontWeight: '700', flex: 1, marginRight: 15}}>
             {product.name}
@@ -43,5 +32,16 @@ const ProductDetailSceen = ({route}) => {
     </View>
   );
 };
-
+const styles = StyleSheet.create({
+  styleImage: {
+    width: Theme.sizes.device_width,
+    height: Theme.sizes.device_width / 2,
+    backgroundColor: 'white',
+  },
+  textTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
 export default ProductDetailSceen;

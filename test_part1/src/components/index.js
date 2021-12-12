@@ -1,3 +1,3 @@
 import BottomTabComponent from './BottomTabComponent';
-import Icon from './Icon';
-export {BottomTabComponent, Icon};
+import ModalAddProduct from './ModalAddProduct';
+export {BottomTabComponent, ModalAddProduct};

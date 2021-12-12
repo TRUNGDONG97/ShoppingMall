@@ -1,37 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Theme from '../constants/Theme';
-import Icon from './Icon';
 const BottomTabComponent = ({state, descriptors, navigation}) => {
-  const getTabBarIcon = (index, focused) => {
-    let iconName = 'basket';
-    let iconSize = focused ? Theme.sizes.width(5.5) : Theme.sizes.width(5);
-    let tintColor = focused ? Theme.colors.active : Theme.colors.gray;
-    switch (index) {
-      case 0: {
-        iconName = 'library';
-        return (
-          <Icon.Ionicons
-            name={iconName}
-            size={iconSize}
-            color={tintColor}
-            outline
-          />
-        );
-      }
-      case 1: {
-        iconName = 'dumbbell';
-        return (
-          <Icon.MaterialCommunityIcons
-            name={iconName}
-            size={iconSize}
-            color={tintColor}
-            outline
-          />
-        );
-      }
-    }
-  };
   return (
     <View
       style={{
@@ -91,7 +61,6 @@ const BottomTabComponent = ({state, descriptors, navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              {/* {getTabBarIcon(index, isFocused)} */}
               <Text
                 numberOfLines={1}
                 style={{
