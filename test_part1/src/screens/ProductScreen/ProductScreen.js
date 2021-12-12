@@ -16,7 +16,6 @@ import {convertCurrency} from '../../constants/Function';
 const ProductScreen = ({navigation}) => {
   const [data, setData] = useState([
     {
-      url: 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
       name: 'SmartTv LG',
       price: '1500',
       quantily: 3,
@@ -70,7 +69,6 @@ const ProductScreen = ({navigation}) => {
     // await getNotication();
   };
   const clickItem = item => {
-    console.log(item);
     navigation.navigate(SCREEN_ROUTER.PRODUCT_DETAIL, {product: item});
   };
   function renderItem({item, index}) {
@@ -89,7 +87,9 @@ const ProductScreen = ({navigation}) => {
             width: 80,
             height: 80,
           }}
-          source={{uri: item.url}}
+          source={{
+            uri: 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
+          }}
         />
         <View
           style={{
@@ -109,6 +109,13 @@ const ProductScreen = ({navigation}) => {
       </TouchableOpacity>
     );
   }
+  const renderEmpty = () => {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Empty</Text>
+      </View>
+    );
+  };
   return (
     <View style={{flex: 1}}>
       <View
@@ -140,6 +147,7 @@ const ProductScreen = ({navigation}) => {
         onEndReachedThreshold={0.2}
         onRefresh={onRefresh}
         refreshing={refresh}
+        ListEmptyComponent={renderEmpty()}
       />
     </View>
   );
