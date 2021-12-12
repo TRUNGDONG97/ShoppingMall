@@ -6,6 +6,8 @@ import {SCREEN_ROUTER} from '../constants/Constant';
 import ProductScreen from '../screens/ProductScreen/ProductScreen';
 import MapScreen from '../screens/Map/MapScreen';
 import {BottomTabComponent} from '../components';
+import ProductDetailSceen from '../screens/ProductDetail/ProductDetailSceen';
+import StoreScreen from '../screens/Store/StoreScreen';
 const MainStack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const Menu = () => {
@@ -38,6 +40,11 @@ const MainNavigation = () => {
             headerShown: false,
           }}
         />
+        <MainStack.Screen
+          name={SCREEN_ROUTER.PRODUCT_DETAIL}
+          component={ProductDetailSceen}
+        />
+        <MainStack.Screen name={SCREEN_ROUTER.STORE} component={StoreScreen} />
       </MainStack.Navigator>
     </NavigationContainer>
   );

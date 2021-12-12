@@ -6,12 +6,14 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import MainNavigation from './src/navigation/MainNavigation';
+import database from '@react-native-firebase/database';
+import {urlFirebase} from './src/constants/Constant';
 
 const App: () => Node = () => {
   return (

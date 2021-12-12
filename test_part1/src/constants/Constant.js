@@ -5,4 +5,6 @@ const SCREEN_ROUTER = {
   STORE: 'Store',
   MENU: 'Menu',
 };
-export {SCREEN_ROUTER};
+const urlFirebase =
+  'https://test-2fbee-default-rtdb.europe-west1.firebasedatabase.app/';
+export {SCREEN_ROUTER, urlFirebase};
