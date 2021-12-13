@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import {convertCurrency} from '../../constants/Function';
 import Theme from '../../constants/Theme';
 
 const ProductDetailSceen = ({route}) => {
@@ -21,9 +20,7 @@ const ProductDetailSceen = ({route}) => {
             {product.name}
           </Text>
 
-          <Text style={{fontSize: 14}}>
-            Price : {convertCurrency(product.price)}
-          </Text>
+          <Text style={{fontSize: 14}}>Price : {product.price} $</Text>
         </View>
         <Text style={{fontSize: 14, marginTop: 30, lineHeight: 20}}>
           {product.description}

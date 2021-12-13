@@ -2,7 +2,6 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {SCREEN_ROUTER} from '../../../constants/Constant';
-import {convertCurrency} from '../../../constants/Function';
 
 const ItemProduct = ({item, index}) => {
   const navigation = useNavigation();
@@ -33,9 +32,7 @@ const ItemProduct = ({item, index}) => {
           {item.name}
         </Text>
 
-        <Text style={{fontSize: 14, marginTop: 8}}>
-          Price : {convertCurrency(item.price)}
-        </Text>
+        <Text style={{fontSize: 14, marginTop: 8}}>Price : {item.price}$</Text>
       </View>
     </TouchableOpacity>
   );

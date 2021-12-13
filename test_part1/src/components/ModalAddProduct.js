@@ -28,9 +28,7 @@ const ModalAddProduct = ({show, setShow}) => {
         setPrice('');
         setDescription('');
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
     setError('');
   };
   return (
@@ -46,7 +44,7 @@ const ModalAddProduct = ({show, setShow}) => {
             style={styles.input}
             value={name}
           />
-          <Text style={styles.label}>Price(€):</Text>
+          <Text style={styles.label}>Price($):</Text>
 
           <TextInput
             onChangeText={text => {
