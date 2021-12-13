@@ -11,10 +11,11 @@ import database from '@react-native-firebase/database';
 const ModalAddProduct = ({show, setShow}) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
+  const [url, setUrl] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
   const onSubmit = () => {
-    if (!name || !price || !description) {
+    if (!name || !price || !description || !url) {
       setError('All field is not empty');
       return;
     }
@@ -22,10 +23,11 @@ const ModalAddProduct = ({show, setShow}) => {
     const key = database().ref().push().key;
     database()
       .ref('product/' + key)
-      .update({key, name, price, description})
+      .update({key, name, price, url, description})
       .then(snapshot => {
         setName('');
         setPrice('');
+        setUrl('');
         setDescription('');
       })
       .catch(err => {});
@@ -45,7 +47,6 @@ const ModalAddProduct = ({show, setShow}) => {
             value={name}
           />
           <Text style={styles.label}>Price($):</Text>
-
           <TextInput
             onChangeText={text => {
               setPrice(text);
@@ -53,6 +54,14 @@ const ModalAddProduct = ({show, setShow}) => {
             keyboardType={'number-pad'}
             value={price}
             style={styles.input}
+          />
+          <Text style={styles.label}>Url Image product:</Text>
+          <TextInput
+            onChangeText={text => {
+              setUrl(text);
+            }}
+            style={styles.input}
+            value={url}
           />
           <Text style={styles.label}>Description</Text>
           <TextInput
@@ -64,9 +73,7 @@ const ModalAddProduct = ({show, setShow}) => {
             multiline={true}
             underlineColorAndroid="transparent"
           />
-          {!!error && (
-            <Text style={{color: 'red', textAlign: 'center'}}>{error}</Text>
-          )}
+          {!!error && <Text style={styles.textError}>{error}</Text>}
           <View style={styles.viewAction}>
             <TouchableOpacity
               style={[styles.styleBtn, {marginRight: 5}]}
@@ -143,6 +150,10 @@ const styles = StyleSheet.create({
   },
   textBtn: {
     fontWeight: '700',
+  },
+  textError: {
+    color: 'red',
+    textAlign: 'center',
   },
 });
 export default ModalAddProduct;

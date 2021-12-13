@@ -33,29 +33,13 @@ const ProductScreen = ({navigation}) => {
       refProduct.off('value', loadingListener);
     };
   }, []);
-  const addProduct = () => {
-    const newReference = database().ref('/products').push();
-    newReference
-      .set({
-        id: 1,
-        name: 'tv',
-      })
-      .then(() => {
-        console.log(data, 'data');
-        let newData = data.push({
-          id: 1,
-          name: 'tv',
-        });
-        setData(newData);
-      });
-  };
 
   function renderItem({item, index}) {
     return <ItemProduct item={item} index={index} />;
   }
   const renderEmpty = () => {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <View style={styles.containerLoading}>
         <Text>Empty</Text>
       </View>
     );
@@ -63,13 +47,15 @@ const ProductScreen = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.viewTitle}>
-        <Text style={{fontSize: 18, fontWeight: '700'}}>List Product</Text>
+        <Text style={styles.textBold}>List Product</Text>
         <TouchableOpacity style={styles.btnAdd} onPress={() => setShow(true)}>
-          <Text style={{fontSize: 18, fontWeight: '700'}}>+</Text>
+          <Text style={styles.textBold}>+</Text>
         </TouchableOpacity>
       </View>
       {loading ? (
-        <ActivityIndicator size={'large'} color={'red'} />
+        <View style={styles.containerLoading}>
+          <ActivityIndicator size={'large'} color={'red'} />
+        </View>
       ) : (
         <FlatList
           data={data}
@@ -99,5 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  containerLoading: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+  textBold: {fontSize: 18, fontWeight: '700'},
 });
 export default ProductScreen;

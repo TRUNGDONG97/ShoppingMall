@@ -10,7 +10,9 @@ const ProductDetailSceen = ({route}) => {
         resizeMode="contain"
         style={styles.styleImage}
         source={{
-          uri: 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
+          uri: product.url
+            ? product.url
+            : 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
         }}
       />
       <View style={{margin: 15, flex: 1}}>

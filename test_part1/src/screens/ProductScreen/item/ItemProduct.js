@@ -19,12 +19,11 @@ const ItemProduct = ({item, index}) => {
       }}>
       <Image
         resizeMode="cover"
-        style={{
-          width: 80,
-          height: 80,
-        }}
+        style={styles.imageProduct}
         source={{
-          uri: 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
+          uri: item.url
+            ? item.url
+            : 'https://cdn01.dienmaycholon.vn/filewebdmclnew/public//picture/product/product18530/product_18530_3.png',
         }}
       />
       <View style={styles.viewText}>
@@ -61,6 +60,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'space-between',
     marginVertical: 10,
+  },
+  imageProduct: {
+    width: 80,
+    height: 80,
   },
 });
 

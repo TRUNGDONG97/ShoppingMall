@@ -32,7 +32,7 @@ const MapScreen = ({navigation}) => {
               key={index}
               coordinate={item}>
               <Image
-                style={{height: 30, width: 30, borderRadius: 10}}
+                style={styles.iconLocation}
                 source={{
                   uri: 'https://cdn1.vectorstock.com/i/1000x1000/41/30/red-location-pin-vector-29784130.jpg',
                 }}
@@ -68,6 +68,11 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     marginBottom: 10,
+  },
+  iconLocation: {
+    height: 30,
+    width: 30,
+    borderRadius: 10,
   },
 });
 

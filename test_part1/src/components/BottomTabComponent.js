@@ -1,14 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Theme from '../constants/Theme';
 const BottomTabComponent = ({state, descriptors, navigation}) => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        height: 58,
-        width: Theme.sizes.device_width,
-      }}>
+    <View style={styles.container}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -39,41 +34,46 @@ const BottomTabComponent = ({state, descriptors, navigation}) => {
         };
 
         return (
-          <View
+          <TouchableOpacity
             key={index}
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: Theme.colors.white,
-              borderColor: Theme.colors.border,
-              borderTopWidth: 0.5,
-            }}>
-            <TouchableOpacity
-              accessibilityRole="button"
-              accessibilityState={isFocused ? {selected: true} : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              onLongPress={onLongPress}
+            accessibilityRole="button"
+            accessibilityState={isFocused ? {selected: true} : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={styles.containerItem}>
+            <Text
+              numberOfLines={1}
               style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
+                color: isFocused ? Theme.colors.active : Theme.colors.gray,
               }}>
-              <Text
-                numberOfLines={1}
-                style={{
-                  color: isFocused ? Theme.colors.active : Theme.colors.gray,
-                }}>
-                {label}
-              </Text>
-            </TouchableOpacity>
-          </View>
+              {label}
+            </Text>
+          </TouchableOpacity>
         );
       })}
     </View>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    height: 58,
+    width: Theme.sizes.device_width,
+  },
+  containerItem: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Theme.colors.white,
+    borderColor: Theme.colors.border,
+    borderTopWidth: 0.5,
+  },
+  btn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 export default BottomTabComponent;
