@@ -2,7 +2,7 @@
 - Follow this guideline from React Native website: https://reactnative.dev/docs/environment-setup
 # Install
 - yarn or npm install
-- cd && pod install --repo-update && cd ..
+- cd ios && pod install --repo-update && cd ..
 # Run ios
 - yarn ios or npm run ios
 # Run android
